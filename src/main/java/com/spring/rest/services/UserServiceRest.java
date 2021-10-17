@@ -2,6 +2,8 @@ package com.spring.rest.services;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +22,12 @@ public class UserServiceRest {
     };
      
     @RequestMapping(value="/users", method=RequestMethod.GET)
-    public List<User>  getUsers(){
+    public List<User> getUsers(){
         return listaUsuarios;
+    }
+    
+    @RequestMapping(value="/user/{id}", method=RequestMethod.GET)
+    public User getUser(@PathVariable(value = "id") int id){
+        return listaUsuarios.get(id);
     }
 }
